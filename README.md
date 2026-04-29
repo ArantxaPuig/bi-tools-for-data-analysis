@@ -48,47 +48,51 @@ Contiene información como:
 
 ---
 
-# 📌 Proceso del Proyecto
-
-## 1️⃣ Carga de Datos
-
-Se importó el archivo Excel en Power BI mediante:
-
-`Inicio > Obtener datos > Excel`
+# 🪜 PASO A PASO DEL PROYECTO EN POWER BI
 
 ---
 
-## 2️⃣ Transformación de Datos (Power Query)
+## 1. 📥 Importación de datos
 
-Se realizaron tareas de limpieza como:
-
-- Renombrado de columnas
-- Corrección de tipos de datos
-- Eliminación de duplicados
-- Gestión de valores nulos
-- Validación de consistencia
-
----
-
-## 3️⃣ Modelado de Datos
-
-Se trabajó con una tabla principal optimizada para análisis.
-
-En futuras versiones se puede evolucionar a modelo estrella con tablas dimensión.
+1. Abrir **Power BI Desktop**
+2. Click en **Obtener datos**
+3. Seleccionar **Excel**
+4. Importar el archivo `pokemon_powerbi.xlsx`
+5. Seleccionar la hoja correspondiente
+6. Pulsar **Cargar**
 
 ---
 
-## 4️⃣ Métricas DAX
+## 2. 🧹 Limpieza de datos (Power Query)
 
-Ejemplos de medidas creadas:
+1. Ir a **Transformar datos**
+2. Revisar tipos de datos:
+   - Texto → Nombre, Tipo
+   - Número entero → estadísticas
+3. Renombrar columnas si es necesario:
+   - `HP` → Vida
+   - `Attack` → Ataque
+   - `Defense` → Defensa
+4. Eliminar duplicados si existen
+5. Revisar valores nulos
+6. Cerrar y aplicar cambios
 
+---
+
+## 3. 🧠 Modelado de datos
+
+En este caso trabajamos con una sola tabla, pero se revisa:
+
+- Correcta estructura de columnas
+- Relación interna si hubiera otras tablas (tipos, generaciones, etc.)
+- Organización de campos (numéricos vs categóricos)
+
+---
+
+## 4. 📐 Creación de medidas DAX
+
+Ejemplos de medidas utilizadas:
+
+### 🔢 Total de Pokémon
 ```DAX
-Total_Pokemon = COUNTROWS(Pokemon)
-
-Promedio_Ataque = AVERAGE(Pokemon[Ataque])
-
-Legendarios =
-CALCULATE(
-    COUNTROWS(Pokemon),
-    Pokemon[Legendary] = TRUE()
-)
+Total Pokemon = COUNTROWS(Pokemon)
